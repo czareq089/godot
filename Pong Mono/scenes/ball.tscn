@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctxbxsmar5kxr"]
+
+[ext_resource type="Texture2D" uid="uid://c6lq5lprmap6g" path="res://assets/ball.png" id="1_mbbti"]
+[ext_resource type="Script" path="res://scenes/ball.cs" id="1_t3idm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8bmw"]
+size = Vector2(36, 36)
+
+[node name="ball" type="CharacterBody2D"]
+script = ExtResource("1_t3idm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mbbti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a8bmw")

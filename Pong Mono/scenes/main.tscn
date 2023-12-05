@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7w1ksy21vlcv"]
+
+[ext_resource type="Script" path="res://scenes/main.cs" id="1_fe366"]
+[ext_resource type="PackedScene" uid="uid://2pygk2bfy7kk" path="res://scenes/wall.tscn" id="1_yx3pb"]
+[ext_resource type="PackedScene" uid="uid://ck34crpeltogx" path="res://scenes/paddle.tscn" id="2_0bolk"]
+[ext_resource type="Script" path="res://scenes/wall.cs" id="2_0ukrb"]
+[ext_resource type="Script" path="res://scenes/enemy_paddle.cs" id="3_ok5v3"]
+[ext_resource type="PackedScene" uid="uid://ctxbxsmar5kxr" path="res://scenes/ball.tscn" id="4_3odek"]
+
+[node name="main" type="Node2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_fe366")
+
+[node name="walls" type="Node" parent="."]
+
+[node name="TopWall" parent="walls" instance=ExtResource("1_yx3pb")]
+position = Vector2(10, -600)
+rotation = 1.5708
+scale = Vector2(1, 9)
+script = ExtResource("2_0ukrb")
+
+[node name="BottomWall" parent="walls" instance=ExtResource("1_yx3pb")]
+position = Vector2(10, 600)
+rotation = 1.5708
+scale = Vector2(1, 9)
+script = ExtResource("2_0ukrb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.4, 0.4)
+
+[node name="Paddle" parent="." instance=ExtResource("2_0bolk")]
+position = Vector2(-1024, 0)
+disable_mode = 2
+
+[node name="EnemyPaddle" parent="." instance=ExtResource("2_0bolk")]
+position = Vector2(1024, 0)
+disable_mode = 2
+script = ExtResource("3_ok5v3")
+
+[node name="ball" parent="." instance=ExtResource("4_3odek")]
+disable_mode = 2
+
+[node name="score" type="Node" parent="."]
+
+[node name="player-score" type="Label" parent="score"]
+offset_left = -1407.0
+offset_top = -808.0
+offset_right = -1338.0
+offset_bottom = -643.0
+theme_override_font_sizes/font_size = 120
+text = "0"
+
+[node name="enemy-score" type="Label" parent="score"]
+offset_left = 1346.0
+offset_top = -808.0
+offset_right = 1415.0
+offset_bottom = -643.0
+theme_override_font_sizes/font_size = 120
+text = "0"
+
+[node name="start-message" type="Label" parent="."]
+offset_left = -436.0
+offset_top = -392.0
+offset_right = 436.0
+offset_bottom = -268.0
+theme_override_font_sizes/font_size = 90
+text = "Press space to start!"
+horizontal_alignment = 1
